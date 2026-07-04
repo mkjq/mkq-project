@@ -73,11 +73,24 @@ mkq-keygen revoke my-website
 
 ### 4. Deploy Frontend to Cloudflare Pages
 
-1. Connect your GitHub repo to Cloudflare Pages
-2. Set environment variables:
-   - `API_BASE_URL` = `https://YOUR_VPS_IP`
-   - `API_KEY` = `sk-mkq-xxxxxxxx...` (generated above)
-3. Deploy — the `streaming-client.js` module works with any framework
+1. Push this repo to GitHub (already done if you're reading this there)
+2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/) → Workers & Pages → Create → Pages
+3. Connect your GitHub repo
+4. Configure the build:
+   - **Framework preset:** None (static HTML)
+   - **Build command:** `node frontend/build.js`
+   - **Build output directory:** `frontend/dist`
+5. Add environment variables in Cloudflare Pages settings:
+   - `API_BASE_URL` = `https://YOUR_ORACLE_VPS_IP`
+   - `API_KEY` = `sk-mkq-xxxxxxxx...` (generated in step 3)
+   - `MODEL` = `deepseek-r1-mkq`
+6. Click **Save and Deploy**
+
+The chat UI will be live at `https://your-project.pages.dev` with:
+- Real-time streaming responses via SSE
+- Reasoning/thinking block display (collapsible)
+- Dark theme, mobile-responsive
+- Auto-reconnect on errors
 
 ## API Key Format
 
@@ -98,6 +111,9 @@ sk-mkq-a7b3c9ef12d4567890abcdef1234567890abcdef12
 | `configs/litellm-config.yaml` | LiteLLM proxy configuration reference |
 | `configs/custom_key_validator.py` | Python callback enforcing `sk-mkq-` prefix |
 | `client/streaming-client.js` | Browser streaming client (ES6+, zero deps) |
+| `frontend/index.html` | Cloudflare Pages chat UI (self-contained) |
+| `frontend/build.js` | Build script: injects env vars before deploy |
+| `frontend/_headers` | Security headers for Cloudflare Pages |
 
 ## Service Management
 
