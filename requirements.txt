@@ -1,0 +1,12 @@
+# =============================================================================
+# DeepSeek-R1 Inference Stack — Python Dependencies
+# =============================================================================
+# Install: pip install -r requirements.txt
+# =============================================================================
+
+# LiteLLM Proxy — OpenAI-compatible API gateway for Ollama
+# Includes proxy extras (admin UI, key management, rate limiting)
+litellm[proxy]>=1.50.0
+
+# Optional: faster token counting (LiteLLM falls back to slow mode without it)
+tiktoken>=0.7.0

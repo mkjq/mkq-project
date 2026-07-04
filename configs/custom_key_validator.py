@@ -94,7 +94,7 @@ if __name__ == "__main__":
 
     test_keys = [
         ("sk-mkq-a7b3c9ef12d4567890abcdef1234567890abcdef12", True),
-        ("sk-mkq-1a2b3c4d5e6f7890abcdef1234567890abcdef12", True),
+        ("sk-mkq-1a2b3c4d5e6f7890abcdef1234567890abcdef1234", True),
         ("sk-mkq-000000000000000000000000000000000000000000", True),
         ("sk-a7b3c9ef12d4567890abcdef1234567890abcdef12", False),   # missing mkq-
         ("sk-mkq-short", False),                                      # too short
@@ -107,7 +107,7 @@ if __name__ == "__main__":
     for key, expected in test_keys:
         result = validate_key_format_static(key)
         status = "PASS" if result == expected else "FAIL"
-        marker = "✓" if result == expected else "✗"
+        marker = "[PASS]" if result == expected else "[FAIL]"
         print(f"  {marker} {status}: '{key[:30]}{'...' if len(key) > 30 else ''}' -> valid={result} (expected={expected})")
 
     print("\n=== Generated test key ===")
