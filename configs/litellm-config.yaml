@@ -1,0 +1,102 @@
+# =============================================================================
+# LiteLLM Configuration — DeepSeek-R1 Proxy with Custom sk-mkq- Key Enforcement
+# =============================================================================
+# This file is deployed at /etc/litellm/config.yaml by setup-ollama-litellm.sh
+# =============================================================================
+
+general_settings:
+  master_key: ${LITELLM_MASTER_KEY}        # Admin master key (set via env)
+  database_url: "sqlite:///var/lib/litellm/litellm.db"
+  disable_master_key_return: true          # Never echo master key in responses
+  custom_key_prefix: "sk-mkq-"             # ⬅ CUSTOM BRAND PREFIX
+
+# ---------------------------------------------------------------------------
+# Key Generation Settings — ENFORCE sk-mkq- prefix
+# ---------------------------------------------------------------------------
+# Every key generated via /key/generate or the admin UI will:
+#   1. Start with "sk-mkq-"
+#   2. End with exactly 42 lowercase hex chars (21 random bytes)
+#   3. Total length = 48 characters
+#   4. Match the regex: ^sk-mkq-[a-f0-9]{42}$
+#
+# Example valid keys:
+#   sk-mkq-a7b3c9ef12d4567890abcdef1234567890abcdef12
+#   sk-mkq-1a2b3c4d5e6f7890abcdef1234567890abcdef12
+#
+# Example REJECTED keys:
+#   sk-a7b3c9ef12d4...              ← missing "mkq-" brand marker
+#   sk-mkq-short                    ← too short / wrong format
+#   abc123...                       ← no sk- prefix at all
+#
+key_generation_settings:
+  key_prefix: "sk-mkq-"                      # Mandatory prefix
+  key_length: 48                             # prefix(7) + hex(42) = 49? NO: 48 total
+  allowed_regex: "^sk-mkq-[a-f0-9]{42}$"    # Strict validation pattern
+  duration: "30d"                            # Default key lifespan (30 days)
+
+# ---------------------------------------------------------------------------
+# Model List — Maps public names to Ollama backends
+# ---------------------------------------------------------------------------
+model_list:
+  # Primary: Custom-tuned DeepSeek-R1 (built from Modelfile)
+  - model_name: deepseek-r1-mkq
+    litellm_params:
+      model: ollama/deepseek-r1-mkq
+      api_base: http://127.0.0.1:11434
+      rpm: 100                                 # Requests per minute per key
+      tpm: 50000                               # Tokens per minute per key
+      timeout: 300                             # HTTP timeout (seconds)
+      stream_timeout: 600                      # Streaming timeout (seconds)
+
+  # Fallback: Stock DeepSeek-R1 distilled
+  - model_name: deepseek-r1-8b
+    litellm_params:
+      model: ollama/deepseek-r1:8b
+      api_base: http://127.0.0.1:11434
+      rpm: 60
+      tpm: 30000
+      timeout: 300
+      stream_timeout: 600
+
+# ---------------------------------------------------------------------------
+# Router Settings — Load balancing & fallback behavior
+# ---------------------------------------------------------------------------
+router_settings:
+  routing_strategy: usage-based              # Route to least-loaded model
+  allowed_fails: 3                            # Retries before fallback
+  num_retries: 2
+  fallbacks:
+    - deepseek-r1-mkq                         # Primary
+    - deepseek-r1-8b                          # Fallback if custom model fails
+
+# ---------------------------------------------------------------------------
+# LiteLLM Core Settings
+# ---------------------------------------------------------------------------
+litellm_settings:
+  drop_params: true                           # Drop unsupported params silently
+  set_verbose: false                          # Reduce log noise
+  request_timeout: 300
+  num_retries: 2
+
+  # =========================================================================
+  # CUSTOM CALLBACKS — sk-mkq- prefix validation on EVERY request
+  # =========================================================================
+  # The custom_key_validator callback runs before every API call and
+  # REJECTS any key that does not match ^sk-mkq-[a-f0-9]{42}$
+  #
+  # Callback file: /opt/litellm/callbacks/custom_key_validator.py
+  # =========================================================================
+  callbacks:
+    - custom_key_validator                    # Async pre-call hook
+
+# ---------------------------------------------------------------------------
+# Rate Limit Defaults (overridden per-key during generation)
+# ---------------------------------------------------------------------------
+environment_variables: {}
+
+# ---------------------------------------------------------------------------
+# Admin UI
+# ---------------------------------------------------------------------------
+ui:
+  enabled: true
+  endpoint: "/ui"
