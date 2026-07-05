@@ -76,64 +76,70 @@ def generate_key(alias: str = "", models: list = None, duration: str = "90d") ->
     return key
 
 # ─── OLLAMA BRIDGE ───────────────────────────────────────────────────────────
-def ollama_chat(model: str, messages: list, stream: bool = False,
-                temperature: float = 0.7, max_tokens: int = 2048):
-    """Send chat completion to Ollama and yield SSE chunks if streaming."""
+def ollama_chat_stream_sync(model: str, messages: list, temperature: float = 0.7, max_tokens: int = 2048):
+    """Non-streaming chat completion."""
     payload = {
-        "model": model,
-        "messages": messages,
-        "stream": stream,
-        "options": {
-            "temperature": temperature,
-            "num_predict": max_tokens,
-        }
+        "model": model, "messages": messages, "stream": False,
+        "options": {"temperature": temperature, "num_predict": max_tokens}
     }
-
     req = Request(
-        f"{CFG["ollama_base"]}/api/chat",
+        f"{CFG['ollama_base']}/api/chat",
         data=json.dumps(payload).encode('utf-8'),
         headers={"Content-Type": "application/json"}
     )
-
     try:
         resp = urlopen(req, timeout=300)
-        if stream:
-            buffer = b""
-            while True:
-                chunk = resp.read(4096)
-                if not chunk:
-                    break
-                buffer += chunk
-                while b"\n" in buffer:
-                    line, buffer = buffer.split(b"\n", 1)
-                    try:
-                        data = json.loads(line)
-                        delta = {}
-                        if "message" in data:
-                            msg = data["message"]
-                            if "content" in msg:
-                                delta["content"] = msg["content"]
-                        if delta:
-                            sse_data = json.dumps({
-                                "choices": [{"delta": delta, "index": 0}]
-                            })
-                            yield f"data: {sse_data}\n\n"
-                    except:
-                        pass
-            yield "data: [DONE]\n\n"
-        else:
-            body = resp.read()
-            data = json.loads(body)
-            content = data.get("message", {}).get("content", "")
-            return {
-                "choices": [{
-                    "message": {"role": "assistant", "content": content},
-                    "index": 0,
-                    "finish_reason": "stop"
-                }]
-            }
+        data = json.loads(resp.read())
+        content = data.get("message", {}).get("content", "")
+        return {
+            "id": "chatcmpl-" + secrets.token_hex(12),
+            "object": "chat.completion",
+            "created": int(time.time()),
+            "model": model,
+            "choices": [{
+                "index": 0,
+                "message": {"role": "assistant", "content": content},
+                "finish_reason": "stop"
+            }],
+            "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
+        }
     except URLError as e:
         raise Exception(f"Ollama connection failed: {e}")
+
+def ollama_chat_stream_stream(model: str, messages: list, temperature: float = 0.7, max_tokens: int = 2048):
+    """Streaming chat completion — yields SSE chunks."""
+    payload = {
+        "model": model, "messages": messages, "stream": True,
+        "options": {"temperature": temperature, "num_predict": max_tokens}
+    }
+    req = Request(
+        f"{CFG['ollama_base']}/api/chat",
+        data=json.dumps(payload).encode('utf-8'),
+        headers={"Content-Type": "application/json"}
+    )
+    try:
+        resp = urlopen(req, timeout=300)
+        buffer = b""
+        while True:
+            chunk = resp.read(4096)
+            if not chunk:
+                break
+            buffer += chunk
+            while b"\n" in buffer:
+                line, buffer = buffer.split(b"\n", 1)
+                try:
+                    data = json.loads(line)
+                    delta = {}
+                    msg = data.get("message", {})
+                    if "content" in msg:
+                        delta["content"] = msg["content"]
+                    if delta:
+                        yield f"data: {json.dumps({'choices': [{'delta': delta, 'index': 0}], 'id': 'chatcmpl-' + secrets.token_hex(12), 'object': 'chat.completion.chunk', 'created': int(time.time()), 'model': model})}\n\n"
+                except:
+                    pass
+        yield "data: [DONE]\n\n"
+    except URLError as e:
+        yield f"data: {json.dumps({'error': str(e)})}\n\n"
 
 def ollama_list_models():
     """Get list of models from Ollama."""
@@ -247,12 +253,12 @@ class MKQHandler(BaseHTTPRequestHandler):
                     self.send_header("Connection", "keep-alive")
                     self.end_headers()
 
-                    for chunk in ollama_chat(model, messages, stream=True,
+                    for chunk in ollama_chat_stream(model, messages,
                                             temperature=temperature, max_tokens=max_tokens):
                         self.wfile.write(chunk.encode('utf-8'))
                         self.wfile.flush()
                 else:
-                    result = ollama_chat(model, messages, stream=False,
+                    result = ollama_chat_sync(model, messages,
                                         temperature=temperature, max_tokens=max_tokens)
                     self._send_json(result)
             except Exception as e:
