@@ -20,15 +20,15 @@ from urllib.error import URLError
 import threading
 
 # ─── CONFIG ──────────────────────────────────────────────────────────────────
-OLLAMA_BASE = os.environ.get("OLLAMA_BASE", "http://127.0.0.1:11434")
-MASTER_KEY = os.environ.get("MKQ_MASTER_KEY", "sk-mkq-master-secret")
+CFG = {
+    "ollama_base": os.environ.get("OLLAMA_BASE", "http://127.0.0.1:11434"),
+    "master_key": os.environ.get("MKQ_MASTER_KEY", "sk-mkq-master-secret"),
+    "port": int(os.environ.get("PORT", "4000")),
+    "host": os.environ.get("HOST", "0.0.0.0"),
+    "keys_file": os.environ.get("KEYS_FILE", "/var/lib/mkq/keys.json"),
+}
 KEY_PREFIX = "sk-mkq-"
 KEY_REGEX = re.compile(r"^sk-mkq-[a-f0-9]{42}$")
-PORT = int(os.environ.get("PORT", "4000"))
-HOST = os.environ.get("HOST", "0.0.0.0")
-
-# Simple JSON file for key storage
-KEYS_FILE = os.environ.get("KEYS_FILE", "/var/lib/mkq/keys.json")
 
 # ─── KEY STORE ───────────────────────────────────────────────────────────────
 keys_store = {}
@@ -37,8 +37,8 @@ keys_lock = threading.Lock()
 def load_keys():
     global keys_store
     try:
-        os.makedirs(os.path.dirname(KEYS_FILE), exist_ok=True)
-        with open(KEYS_FILE) as f:
+        os.makedirs(os.path.dirname(CFG["keys_file"]), exist_ok=True)
+        with open(CFG["keys_file"]) as f:
             keys_store = json.load(f)
     except:
         keys_store = {}
@@ -46,15 +46,15 @@ def load_keys():
 def save_keys():
     with keys_lock:
         try:
-            os.makedirs(os.path.dirname(KEYS_FILE), exist_ok=True)
-            with open(KEYS_FILE, 'w') as f:
+            os.makedirs(os.path.dirname(CFG["keys_file"]), exist_ok=True)
+            with open(CFG["keys_file"], 'w') as f:
                 json.dump(keys_store, f, indent=2)
         except:
             pass
 
 def validate_key(token: str) -> bool:
     """Check if key is valid (master key or stored key)."""
-    if token == MASTER_KEY:
+    if token == CFG["master_key"]:
         return True
     if KEY_REGEX.match(token):
         with keys_lock:
@@ -90,7 +90,7 @@ def ollama_chat(model: str, messages: list, stream: bool = False,
     }
 
     req = Request(
-        f"{OLLAMA_BASE}/api/chat",
+        f"{CFG["ollama_base"]}/api/chat",
         data=json.dumps(payload).encode('utf-8'),
         headers={"Content-Type": "application/json"}
     )
@@ -138,7 +138,7 @@ def ollama_chat(model: str, messages: list, stream: bool = False,
 def ollama_list_models():
     """Get list of models from Ollama."""
     try:
-        req = Request(f"{OLLAMA_BASE}/api/tags")
+        req = Request(f"{CFG["ollama_base"]}/api/tags")
         resp = urlopen(req, timeout=10)
         data = json.loads(resp.read())
         models = []
@@ -189,7 +189,7 @@ class MKQHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == "/health":
-            self._send_json({"status": "ok", "ollama": OLLAMA_BASE})
+            self._send_json({"status": "ok", "ollama": CFG["ollama_base"]})
             return
 
         if self.path == "/v1/models":
@@ -201,7 +201,7 @@ class MKQHandler(BaseHTTPRequestHandler):
 
         if self.path.startswith("/key/list"):
             token = self._get_token()
-            if token != MASTER_KEY:
+            if token != CFG["master_key"]:
                 return self._send_error("Master key required")
             with keys_lock:
                 key_list = [{"key": k[:12] + "...", "key_alias": v.get("alias", ""),
@@ -266,7 +266,7 @@ class MKQHandler(BaseHTTPRequestHandler):
         # ── Key Generation ───────────────────────────────────────────
         if self.path == "/key/generate":
             token = self._get_token()
-            if token != MASTER_KEY:
+            if token != CFG["master_key"]:
                 return self._send_error("Master key required")
 
             alias = data.get("key_alias", data.get("key", "unnamed"))
@@ -285,7 +285,7 @@ class MKQHandler(BaseHTTPRequestHandler):
         # ── Key Delete ───────────────────────────────────────────────
         if self.path == "/key/delete":
             token = self._get_token()
-            if token != MASTER_KEY:
+            if token != CFG["master_key"]:
                 return self._send_error("Master key required")
 
             to_delete = data.get("keys", [])
@@ -304,17 +304,16 @@ class MKQHandler(BaseHTTPRequestHandler):
 # ─── MAIN ────────────────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(description="MKQ AI Proxy")
-    parser.add_argument("--port", type=int, default=PORT, help=f"Port (default: {PORT})")
-    parser.add_argument("--host", type=str, default=HOST, help=f"Host (default: {HOST})")
-    parser.add_argument("--ollama", type=str, default=OLLAMA_BASE, help="Ollama base URL")
-    parser.add_argument("--master-key", type=str, default=MASTER_KEY, help="Master API key")
+    parser.add_argument("--port", type=int, default=CFG["port"], help=f"Port (default: {CFG['port']})")
+    parser.add_argument("--host", type=str, default=CFG["host"], help=f"Host (default: {CFG['host']})")
+    parser.add_argument("--ollama", type=str, default=CFG["ollama_base"], help="Ollama base URL")
+    parser.add_argument("--master-key", type=str, default=CFG["master_key"], help="Master API key")
     args = parser.parse_args()
 
-    global OLLAMA_BASE, MASTER_KEY, PORT, HOST
-    OLLAMA_BASE = args.ollama
-    MASTER_KEY = args.master_key
-    PORT = args.port
-    HOST = args.host
+    CFG["ollama_base"] = args.ollama
+    CFG["master_key"] = args.master_key
+    CFG["port"] = args.port
+    CFG["host"] = args.host
 
     # Load existing keys
     load_keys()
@@ -323,14 +322,14 @@ def main():
 ╔══════════════════════════════════════════════════════════════╗
 ║     🧠 MKQ AI Proxy — Ready                                  ║
 ╠══════════════════════════════════════════════════════════════╣
-║  Ollama:    {OLLAMA_BASE:<44} ║
-║  Listen:    http://{HOST}:{PORT:<38} ║
-║  Keys:      {KEYS_FILE:<44} ║
-║  Master:    {MASTER_KEY[:20]}...{'':<31} ║
+║  Ollama:    {CFG['ollama_base']:<44} ║
+║  Listen:    http://{CFG['host']}:{CFG['port']:<38} ║
+║  Keys:      {CFG['keys_file']:<44} ║
+║  Master:    {CFG['master_key'][:20]}...{'':<31} ║
 ╚══════════════════════════════════════════════════════════════╝
 """)
 
-    server = HTTPServer((HOST, PORT), MKQHandler)
+    server = HTTPServer((CFG["host"], CFG["port"]), MKQHandler)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
