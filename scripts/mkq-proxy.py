@@ -76,7 +76,7 @@ def generate_key(alias: str = "", models: list = None, duration: str = "90d") ->
     return key
 
 # ─── OLLAMA BRIDGE ───────────────────────────────────────────────────────────
-def ollama_chat_stream_sync(model: str, messages: list, temperature: float = 0.7, max_tokens: int = 2048):
+def ollama_chat_sync(model: str, messages: list, temperature: float = 0.7, max_tokens: int = 2048):
     """Non-streaming chat completion."""
     payload = {
         "model": model, "messages": messages, "stream": False,
