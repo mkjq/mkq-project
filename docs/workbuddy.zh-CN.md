@@ -2,13 +2,13 @@
 
 # 接入 WorkBuddy/CodeBuddy
 
-WorkBuddy/CodeBuddy 是 AI Agent 与编程助手工具。它支持通过本地模型配置文件添加自定义模型，可以使用 OpenAI 兼容的 Chat Completions API 接入 DeepSeek V4。
+WorkBuddy/CodeBuddy 是 AI Agent 与编程助手工具。它支持通过本地模型配置文件添加自定义模型，可以使用 OpenAI 兼容的 Chat Completions API 接入 MKQ AI V4。
 
 #### 1. 安装 WorkBuddy/CodeBuddy
 
 - 安装并登录 WorkBuddy/CodeBuddy。
 - 至少打开一次项目目录，让应用创建本地配置目录。
-- 前往 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 获取 API Key。
+- 前往 [MKQ AI 开放平台](https://platform.deepseek.com/api_keys) 获取 API Key。
 
 #### 2. 配置本地模型
 
@@ -24,7 +24,7 @@ C:\Users\<你的用户名>\.codebuddy\models.json
 <你的项目>\.codebuddy\models.json
 ```
 
-先将 DeepSeek API Key 设置为环境变量：
+先将 MKQ AI API Key 设置为环境变量：
 
 ```powershell
 setx DEEPSEEK_API_KEY "<your DeepSeek API Key>"
@@ -99,7 +99,7 @@ curl https://api.deepseek.com/v1/chat/completions `
 
 #### 常见问题
 
-- `Authentication Fails` 或 `401`：检查 `apiKey` 是否为真实 DeepSeek API Key。不要把接口 URL 填到 API Key 字段。
+- `Authentication Fails` 或 `401`：检查 `apiKey` 是否为真实 MKQ AI API Key。不要把接口 URL 填到 API Key 字段。
 - `未找到模型` 或 `404`：检查模型 id 是否严格写成 `deepseek-v4-pro` 或 `deepseek-v4-flash`。
 - `读取本地模型配置失败`：检查 `models.json` 是否是合法 JSON，并保存为 UTF-8 无 BOM。
 - 模型选择器中不显示：完全重启 WorkBuddy/CodeBuddy，并确认文件放在 `.codebuddy\models.json`。

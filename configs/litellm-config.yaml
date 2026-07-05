@@ -1,5 +1,5 @@
 # =============================================================================
-# LiteLLM Configuration — DeepSeek-R1 Proxy with Custom sk-mkq- Key Enforcement
+# LiteLLM Configuration — MKQ AI Proxy with Custom sk-mkq- Key Enforcement
 # =============================================================================
 # This file is deployed at /etc/litellm/config.yaml by setup-ollama-litellm.sh
 # =============================================================================
@@ -38,7 +38,7 @@ key_generation_settings:
 # Model List — Maps public names to Ollama backends
 # ---------------------------------------------------------------------------
 model_list:
-  # Primary: Custom-tuned DeepSeek-R1 (built from Modelfile)
+  # Primary: Custom-tuned MKQ AI (built from Modelfile)
   - model_name: deepseek-r1-mkq
     litellm_params:
       model: ollama/deepseek-r1-mkq
@@ -48,7 +48,7 @@ model_list:
       timeout: 300                             # HTTP timeout (seconds)
       stream_timeout: 600                      # Streaming timeout (seconds)
 
-  # Fallback: Stock DeepSeek-R1 distilled
+  # Fallback: Stock MKQ AI distilled
   - model_name: deepseek-r1-8b
     litellm_params:
       model: ollama/deepseek-r1:8b

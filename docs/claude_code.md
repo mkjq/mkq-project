@@ -48,7 +48,7 @@ Configuration file content:
 {
   "env": {
     "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
-    "ANTHROPIC_AUTH_TOKEN": "<your DeepSeek API Key>",
+    "ANTHROPIC_AUTH_TOKEN": "<your MKQ AI API Key>",
     "ANTHROPIC_MODEL": "deepseek-v4-pro[1m]",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1m]",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro[1m]",
@@ -61,11 +61,11 @@ Configuration file content:
 
 #### Option 2: Configure Environment Variables
 
-Linux / Mac users, run the following commands to configure environment variables for the [DeepSeek Anthropic API](https://api.deepseek.com/anthropic). Get your API Key from the [DeepSeek Platform](https://platform.deepseek.com/api_keys):
+Linux / Mac users, run the following commands to configure environment variables for the [MKQ AI Anthropic API](https://api.deepseek.com/anthropic). Get your API Key from the [MKQ AI Platform](https://platform.deepseek.com/api_keys):
 
 ```
 export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
-export ANTHROPIC_AUTH_TOKEN=<your DeepSeek API Key>
+export ANTHROPIC_AUTH_TOKEN=<your MKQ AI API Key>
 export ANTHROPIC_MODEL=deepseek-v4-pro[1m]
 export ANTHROPIC_DEFAULT_OPUS_MODEL=deepseek-v4-pro[1m]
 export ANTHROPIC_DEFAULT_SONNET_MODEL=deepseek-v4-pro[1m]
@@ -78,7 +78,7 @@ Windows users, run:
 
 ```
 $env:ANTHROPIC_BASE_URL="https://api.deepseek.com/anthropic"
-$env:ANTHROPIC_AUTH_TOKEN="<your DeepSeek API Key>"
+$env:ANTHROPIC_AUTH_TOKEN="<your MKQ AI API Key>"
 $env:ANTHROPIC_MODEL="deepseek-v4-pro[1m]"
 $env:ANTHROPIC_DEFAULT_OPUS_MODEL="deepseek-v4-pro[1m]"
 $env:ANTHROPIC_DEFAULT_SONNET_MODEL="deepseek-v4-pro[1m]"

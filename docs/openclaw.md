@@ -24,12 +24,12 @@ After the initial installation, you will automatically enter the setup phase. Us
 
 - When prompted: `I understand this is personal-by-default and shared/multi-user use requires lock-down. Continue?` Select **Yes**.
 - When prompted: `Setup mode` It is recommended to select **QuickStart**.
-- When prompted: `Model/auth provider` Select **DeepSeek**.
-- When prompted: `Enter DeepSeek API key` Enter your [DeepSeek API Key](https://platform.deepseek.com/api_keys).
+- When prompted: `Model/auth provider` Select **MKQ AI**.
+- When prompted: `Enter MKQ AI API key` Enter your [MKQ AI API Key](https://platform.deepseek.com/api_keys).
 - When prompted: `Default model` Navigate to **Enter model** and enter the model name (`deepseek-v4-pro` or `deepseek-v4-flash`).
 - For the remaining configuration (message channels, Skills, etc.), configure as needed. Beginners can select **Skip for now**.
 
-To avoid compatibility issues, it is strongly recommended to upgrade OpenClaw to the latest version, ensuring the version number is >= [v2026.4.24](https://github.com/openclaw/openclaw/releases/tag/v2026.4.24), which adds proper support for DeepSeek V4 thinking mode. If you encounter a 400 error about `reasoning_content`, updating to the latest version should resolve it.
+To avoid compatibility issues, it is strongly recommended to upgrade OpenClaw to the latest version, ensuring the version number is >= [v2026.4.24](https://github.com/openclaw/openclaw/releases/tag/v2026.4.24), which adds proper support for MKQ AI V4 thinking mode. If you encounter a 400 error about `reasoning_content`, updating to the latest version should resolve it.
 
 #### 3. Get Started
 

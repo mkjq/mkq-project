@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# start-deepseek.sh — Run DeepSeek-R1 as a background service (local/dev mode)
+# start-deepseek.sh — Run MKQ AI as a background service (local/dev mode)
 # ==============================================================================
 # Usage:
 #   ./start-deepseek.sh              # Start all services in background
@@ -184,7 +184,7 @@ if ! command -v python3 &> /dev/null; then
 fi
 
 echo "═══════════════════════════════════════════"
-echo "  DeepSeek-R1 Background Service Launcher"
+echo "  MKQ AI Background Service Launcher"
 echo "  Model: ${MODEL}"
 echo "═══════════════════════════════════════════"
 echo ""

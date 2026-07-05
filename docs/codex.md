@@ -21,9 +21,9 @@ codex --version
 go version
 ```
 
-#### 2. Get a DeepSeek API Key
+#### 2. Get an MKQ AI API Key
 
-Go to the [DeepSeek Platform](https://platform.deepseek.com/api_keys), create an API key, and copy it.
+Go to the [MKQ AI Platform](https://platform.deepseek.com/api_keys), create an API key, and copy it.
 
 #### 3. Configure Moon Bridge
 
@@ -34,7 +34,7 @@ git clone https://github.com/ZhiYi-R/moon-bridge.git
 cd moon-bridge
 ```
 
-Create `config.yml` and set your DeepSeek API key:
+Create `config.yml` and set your MKQ AI API key:
 
 ```yaml
 mode: "Transform"
@@ -90,7 +90,7 @@ defaults:
   max_tokens: 65536
 ```
 
-This minimal config uses the current Moon Bridge configuration structure and enables DeepSeek V4 Pro / Flash, Codex model metadata, and the DeepSeek V4 compatibility extension. **For image input, Web Search, or multi-provider routing**, extend it with the options from Moon Bridge's `config.example.yml`.
+This minimal config uses the current Moon Bridge configuration structure and enables MKQ AI V4 Pro / Flash, Codex model metadata, and the MKQ AI V4 compatibility extension. **For image input, Web Search, or multi-provider routing**, extend it with the options from Moon Bridge's `config.example.yml`.
 
 #### 4. Start Moon Bridge
 
@@ -171,7 +171,7 @@ cd /path/to/my-project
 codex
 ```
 
-Codex now sends OpenAI Responses requests to Moon Bridge, and Moon Bridge routes them to DeepSeek V4.
+Codex now sends OpenAI Responses requests to Moon Bridge, and Moon Bridge routes them to MKQ AI V4.
 
 Codex App can use the same generated Codex configuration.
 
@@ -229,12 +229,12 @@ curl http://127.0.0.1:38440/v1/responses \
 - `connection refused`: Moon Bridge is not running, or `server.addr` in `config.yml` uses a different port.
 - Codex cannot see the model: rerun step 5; Codex needs `models_catalog.json` in `CODEX_HOME`.
 - Config loading fails with `field provider not found`: you are using the old `provider.providers` format. The current format uses top-level `providers`, `models`, `routes`, and `defaults`.
-- `401` or authentication errors: check the DeepSeek API key in `config.yml`.
-- `402` or payment errors: check your DeepSeek Platform balance.
+- `401` or authentication errors: check the MKQ AI API key in `config.yml`.
+- `402` or payment errors: check your MKQ AI Platform balance.
 - Image input fails: if you enabled the Visual extension, configure a separate visual provider (e.g., Kimi) with its API key. You can configure that provider, or remove `visual.enabled: true` to disable the Visual extension.
 
 #### Resources
 
 - [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge)
 - [Codex CLI](https://github.com/openai/codex)
-- [DeepSeek API Docs](https://api-docs.deepseek.com/)
+- [MKQ AI API Docs](https://api-docs.deepseek.com/)

@@ -21,9 +21,9 @@ crush --version
 
 > **Note:** macOS users can also install via Homebrew: `brew install charmbracelet/tap/crush`.
 
-#### 2. Configure DeepSeek Provider
+#### 2. Configure MKQ AI Provider
 
-Crush supports custom providers via OpenAI-compatible APIs. Add DeepSeek to your configuration file:
+Crush supports custom providers via OpenAI-compatible APIs. Add MKQ AI to your configuration file:
 
 - **Linux / macOS**: `~/.config/crush/crush.json`
 - **Windows**: `%USERPROFILE%\.config\crush\crush.json`
@@ -57,20 +57,20 @@ Crush supports custom providers via OpenAI-compatible APIs. Add DeepSeek to your
 }
 ```
 
-Get your API Key from the [DeepSeek Platform](https://platform.deepseek.com/api_keys).
+Get your API Key from the [MKQ AI Platform](https://platform.deepseek.com/api_keys).
 
 Set the environment variable:
 
 Linux / Mac users:
 
 ```bash
-export DEEPSEEK_API_KEY="<your DeepSeek API Key>"
+export DEEPSEEK_API_KEY="<your MKQ AI API Key>"
 ```
 
 Windows users:
 
 ```powershell
-$env:DEEPSEEK_API_KEY="<your DeepSeek API Key>"
+$env:DEEPSEEK_API_KEY="<your MKQ AI API Key>"
 ```
 
 #### 3. Run and Select Model
@@ -83,5 +83,5 @@ crush
 ```
 
 - Press `Ctrl+L` (or type `/model`) to open the model switcher.
-- Select the **DeepSeek** provider and choose `DeepSeek-V4-Pro` or `DeepSeek-V4-Flash`.
+- Select the **MKQ AI** provider and choose `MKQ AI V4 Pro` or `MKQ AI V4 Flash`.
 - Start coding with your new terminal bestie 💘

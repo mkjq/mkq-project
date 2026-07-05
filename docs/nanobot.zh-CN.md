@@ -56,7 +56,7 @@ nanobot onboard
     },
     "providers": {
         "deepseek": {
-            "apiKey": "<你的 DeepSeek API Key>",
+            "apiKey": "<你的 MKQ AI API Key>",
             "apiBase": "https://api.deepseek.com/v1",
         },
     },

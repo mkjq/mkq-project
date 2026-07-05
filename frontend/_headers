@@ -1,7 +1,7 @@
 # =============================================================================
-# Cloudflare Pages Headers — Security + CORS
+# Cloudflare Pages Headers — Security + CORS + API Proxy
 # =============================================================================
-# Cloudflare reads this file automatically from the deploy root.
+# This file is read automatically by Cloudflare Pages from the deploy root.
 # =============================================================================
 
 /*
@@ -9,7 +9,13 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: Content-Type, Authorization
 
 /index.html
   Cache-Control: public, max-age=3600
   X-Robots-Tag: noindex
+
+/assets/*
+  Cache-Control: public, max-age=86400

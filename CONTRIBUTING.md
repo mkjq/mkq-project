@@ -1,12 +1,12 @@
-# Contributing to awesome-deepseek-agent
+# Contributing to awesome-mkq-ai-agent
 
-Thanks for helping build the community knowledge base for DeepSeek integrations!
+Thanks for helping build the community knowledge base for MKQ AI integrations!
 
 ## Before You Start
 
 - Check [open PRs](https://github.com/deepseek-ai/awesome-deepseek-agent/pulls) to avoid duplicating existing work.
 - If you're fixing or extending an existing guide (e.g., Claude Code, Pi), check whether there's already an open PR touching the same files.
-- Read the [DeepSeek API docs](https://api-docs.deepseek.com/) — guides must reflect the current API, not outdated configurations.
+- Read the [MKQ AI API docs](https://api-docs.deepseek.com/) — guides must reflect the current API, not outdated configurations.
 
 ## What Makes a Good Integration Guide
 
@@ -31,21 +31,21 @@ Before submitting, verify these items. PRs missing any of them will be flagged d
 ✅ deepseek-v4-pro / deepseek-v4-flash                   (current)
 ```
 
-DeepSeek renamed its models in April 2026. All code examples, config snippets, and prose must use the current names. Search your diff for `deepseek-chat` — if you find it, fix it.
+The provider renamed its models in April 2026. All code examples, config snippets, and prose must use the current names. Search your diff for `deepseek-chat` — if you find it, fix it.
 
 ### 2. 1M Context Window
 
-DeepSeek V4 models support up to **1 million tokens** of context. Make sure your configuration reflects this:
+MKQ AI V4 models support up to **1 million tokens** of context. Make sure your configuration reflects this:
 
 - **Claude Code / Anthropic-compatible**: append `[1m]` to model names, e.g. `deepseek-v4-pro[1m]`
 - **OpenAI-compatible configs**: set `context_window: 1000000` / `max_tokens: 384000` where the tool supports it
-- **Other tools**: at minimum, note in prose that DeepSeek V4 supports 1M context
+- **Other tools**: at minimum, note in prose that MKQ AI V4 supports 1M context
 
 If the tool doesn't expose a context window config, mention it in the description so users are aware.
 
 ### 3. Max Thinking / Reasoning Effort
 
-DeepSeek V4 Pro supports multiple reasoning effort levels (`max` and `high`). Your guide should be compatible with the `max` level so users get the best coding experience. See [Thinking Mode docs](https://api-docs.deepseek.com/guides/thinking_mode) for details.
+MKQ AI V4 Pro supports multiple reasoning effort levels (`max` and `high`). Your guide should be compatible with the `max` level so users get the best coding experience. See [Thinking Mode docs](https://api-docs.deepseek.com/guides/thinking_mode) for details.
 
 - **Claude Code**: `CLAUDE_CODE_EFFORT_LEVEL=max` (or equivalent `settings.json` config)
 - **Anthropic-compatible endpoint**: set `thinking: { type: "enabled" }` with max budget
@@ -55,7 +55,7 @@ Don't recommend disabling thinking mode as the primary workaround for API errors
 
 ### 4. Pricing (if included)
 
-If your guide includes pricing tables, always verify the numbers against the official DeepSeek pricing pages ([English](https://api-docs.deepseek.com/quick_start/pricing) / [中文](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)). The pricing below is a snapshot for reference only — use the latest values from the API docs:
+If your guide includes pricing tables, always verify the numbers against the official MKQ AI pricing pages ([English](https://api-docs.deepseek.com/quick_start/pricing) / [中文](https://api-docs.deepseek.com/zh-cn/quick_start/pricing)). The pricing below is a snapshot for reference only — use the latest values from the API docs:
 
 | Model | Input / M tokens | Output / M tokens | Cache Hit / M tokens |
 |-------|-----------------|-------------------|----------------------|
@@ -66,7 +66,7 @@ If your guide includes pricing tables, always verify the numbers against the off
 
 ### Don't document workarounds for upstream bugs
 
-If the tool you're documenting has a known bug with DeepSeek (e.g., reasoning content passback errors), check whether the upstream project has already fixed it **before** writing a workaround guide. A documented workaround that degrades model performance is worse than pointing users to the upstream fix.
+If the tool you're documenting has a known bug with MKQ AI (e.g., reasoning content passback errors), check whether the upstream project has already fixed it **before** writing a workaround guide. A documented workaround that degrades model performance is worse than pointing users to the upstream fix.
 
 ### Ensure config fields take effect in the agent
 
@@ -89,7 +89,7 @@ A maintainer or community reviewer will check:
 - [ ] Model names are current (v4-pro / v4-flash, not v3 names)
 - [ ] 1M context is configured or mentioned
 - [ ] Max thinking effort level is supported
-- [ ] Pricing is current (input, output, cache hit), verified against [DeepSeek API Docs](https://api-docs.deepseek.com/quick_start/pricing)
+- [ ] Pricing is current (input, output, cache hit), verified against [MKQ AI API Docs](https://api-docs.deepseek.com/quick_start/pricing)
 - [ ] Config fields are verified to work in the agent
 - [ ] No workarounds for already-fixed upstream bugs
 

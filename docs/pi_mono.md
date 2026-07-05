@@ -24,9 +24,9 @@ pi --version
 > curl -fsSL https://pi.dev/install.sh | sh
 > ```
 
-#### 2. Configure DeepSeek Provider
+#### 2. Configure MKQ AI Provider
 
-Pi supports custom providers via `models.json`. Add DeepSeek as an OpenAI-compatible provider:
+Pi supports custom providers via `models.json`. Add MKQ AI as an OpenAI-compatible provider:
 
 - **Linux / macOS**: `~/.pi/agent/models.json`
 - **Windows**: `%USERPROFILE%\.pi\agent\models.json`
@@ -41,7 +41,7 @@ Pi supports custom providers via `models.json`. Add DeepSeek as an OpenAI-compat
       "models": [
         {
           "id": "deepseek-v4-pro",
-          "name": "DeepSeek V4 Pro",
+          "name": "MKQ AI V4 Pro",
           "contextWindow": 1000000,
           "maxTokens": 384000,
           "input": ["text"],
@@ -67,7 +67,7 @@ Pi supports custom providers via `models.json`. Add DeepSeek as an OpenAI-compat
         },
         {
           "id": "deepseek-v4-flash",
-          "name": "DeepSeek V4 Flash",
+          "name": "MKQ AI V4 Flash",
           "contextWindow": 1000000,
           "maxTokens": 384000,
           "input": ["text"],
@@ -97,20 +97,20 @@ Pi supports custom providers via `models.json`. Add DeepSeek as an OpenAI-compat
 }
 ```
 
-Get your API Key from the [DeepSeek Platform](https://platform.deepseek.com/api_keys).
+Get your API Key from the [MKQ AI Platform](https://platform.deepseek.com/api_keys).
 
 Set the environment variable:
 
 Linux / Mac users:
 
 ```bash
-export DEEPSEEK_API_KEY="<your DeepSeek API Key>"
+export DEEPSEEK_API_KEY="<your MKQ AI API Key>"
 ```
 
 Windows users:
 
 ```powershell
-$env:DEEPSEEK_API_KEY="<your DeepSeek API Key>"
+$env:DEEPSEEK_API_KEY="<your MKQ AI API Key>"
 ```
 
 #### 3. Run and Select Model
@@ -123,7 +123,7 @@ pi
 ```
 
 - Type `/model` to open the model switcher.
-- Select **deepseek** and choose `DeepSeek-V4-Pro` or `DeepSeek-V4-Flash`.
+- Select **deepseek** and choose `MKQ AI V4-Pro` or `MKQ AI V4-Flash`.
 - Start coding with your minimal terminal harness.
 
 For more configuration options, see the [Pi models documentation](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent/docs/models.md).

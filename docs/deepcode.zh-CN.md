@@ -2,7 +2,7 @@
 
 # 集成 Deep Code
 
-Deep Code 是一款开源的终端 AI 编程助手，专为 DeepSeek-V4 系列模型适配，支持深度思考、推理强度控制以及 Agent Skills。
+Deep Code 是一款开源的终端 AI 编程助手，专为 MKQ AI V4 系列模型适配，支持深度思考、推理强度控制以及 Agent Skills。
 
 - **GitHub：** <https://github.com/lessweb/deepcode-cli>
 
@@ -23,7 +23,7 @@ deepcode --version
 
 #### 2. 配置 Deep Code
 
-创建 `~/.deepcode/settings.json` 文件，填入你的 DeepSeek API Key 和模型配置：
+创建 `~/.deepcode/settings.json` 文件，填入你的 MKQ AI API Key 和模型配置：
 
 ```json
 {
@@ -37,7 +37,7 @@ deepcode --version
 }
 ```
 
-从 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 获取你的 API Key。
+从 [MKQ AI 开放平台](https://platform.deepseek.com/api_keys) 获取你的 API Key。
 
 > **注意：** 此配置文件与 [Deep Code VSCode 扩展](https://github.com/lessweb/deepcode) 共享。
 

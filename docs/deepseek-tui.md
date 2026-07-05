@@ -1,12 +1,12 @@
 [English](./deepseek-tui.md) | [简体中文](./deepseek-tui.zh-CN.md) · [← Back](../README.md)
 
-# Integrate with DeepSeek-TUI
+# Integrate with MKQ AI TUI
 
-DeepSeek-TUI is an open-source terminal AI coding assistant built in Rust as a Codex-style 13-crate workspace. It talks to `api.deepseek.com` directly, supports DeepSeek-V4-Pro and DeepSeek-V4-Flash with the full 1M-token context window, and ships sandboxed tool execution on macOS (Seatbelt), Linux (Landlock), and Windows.
+MKQ AI TUI is an open-source terminal AI coding assistant built in Rust as a Codex-style 13-crate workspace. It talks to `api.deepseek.com` directly, supports MKQ AI V4-Pro and MKQ AI V4-Flash with the full 1M-token context window, and ships sandboxed tool execution on macOS (Seatbelt), Linux (Landlock), and Windows.
 
 - **GitHub:** <https://github.com/Hmbown/DeepSeek-TUI>
 
-#### 1. Install DeepSeek-TUI
+#### 1. Install MKQ AI TUI
 
 Choose any of:
 
@@ -27,9 +27,9 @@ Verify:
 deepseek --version
 ```
 
-#### 2. Get a DeepSeek API Key
+#### 2. Get an MKQ AI API Key
 
-Get your API Key from the [DeepSeek Platform](https://platform.deepseek.com/api_keys). On first run, `deepseek auth` walks you through saving it to `~/.deepseek/config.toml`. You can also set `DEEPSEEK_API_KEY` as an environment variable.
+Get your API Key from the [MKQ AI Platform](https://platform.deepseek.com/api_keys). On first run, `deepseek auth` walks you through saving it to `~/.deepseek/config.toml`. You can also set `DEEPSEEK_API_KEY` as an environment variable.
 
 #### 3. Enter a project directory and launch
 
@@ -40,7 +40,7 @@ deepseek
 
 `deepseek` is the canonical entry point. It dispatches to the interactive TUI by default, or to subcommands like `deepseek doctor`, `deepseek mcp list`, `deepseek serve --http`, `deepseek -p "one-shot prompt"`, and `deepseek --yolo`.
 
-By default DeepSeek-TUI uses **DeepSeek-V4-Pro**. Press `Shift+Tab` to cycle reasoning effort (`off → high → max`). Press `Tab` to cycle modes:
+By default MKQ AI TUI uses **MKQ AI V4-Pro**. Press `Shift+Tab` to cycle reasoning effort (`off → high → max`). Press `Tab` to cycle modes:
 
 | Mode | What it does |
 |---|---|
@@ -75,7 +75,7 @@ By default DeepSeek-TUI uses **DeepSeek-V4-Pro**. Press `Shift+Tab` to cycle rea
 
 #### MCP, Skills, and Hooks
 
-- **MCP servers** — configure via `~/.deepseek/mcp.json` or `deepseek mcp add ...`. DeepSeek-TUI is both an MCP client and an MCP server (`deepseek mcp serve`).
+- **MCP servers** — configure via `~/.deepseek/mcp.json` or `deepseek mcp add ...`. MKQ AI TUI is both an MCP client and an MCP server (`deepseek mcp serve`).
 - **Skills** — drop a `SKILL.md` under `~/.deepseek/skills/<name>/` (user-level) or `./.deepseek/skills/<name>/` (project-level).
 - **Hooks** — pre/post lifecycle hooks (stdout / jsonl / webhook) configured in `[hooks]` in `config.toml`.
 - **Sub-agents** — the model can spawn child agents via `agent_spawn` and use the full lifecycle family (`agent_wait`, `agent_result`, `agent_cancel`, ...).
@@ -83,4 +83,4 @@ By default DeepSeek-TUI uses **DeepSeek-V4-Pro**. Press `Shift+Tab` to cycle rea
 
 #### HTTP runtime API
 
-`deepseek serve --http` exposes a `/v1/*` runtime API for embedding DeepSeek-TUI in IDEs and web UIs (sessions, threads, turns, tasks, automations, MCP, skills). See [`docs/RUNTIME_API.md`](https://github.com/Hmbown/DeepSeek-TUI/blob/main/docs/RUNTIME_API.md) for the contract.
+`deepseek serve --http` exposes a `/v1/*` runtime API for embedding MKQ AI TUI in IDEs and web UIs (sessions, threads, turns, tasks, automations, MCP, skills). See [`docs/RUNTIME_API.md`](https://github.com/Hmbown/DeepSeek-TUI/blob/main/docs/RUNTIME_API.md) for the contract.

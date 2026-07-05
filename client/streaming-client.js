@@ -1,10 +1,10 @@
 /**
  * =============================================================================
- * DeepSeek-R1 Streaming Client — Cloudflare Pages Frontend
+ * MKQ AI Streaming Client — Cloudflare Pages Frontend
  * =============================================================================
  *
  * A robust, production-ready JavaScript module for streaming chat completions
- * from a self-hosted DeepSeek-R1 inference server (Oracle Cloud VPS + LiteLLM).
+ * from a self-hosted MKQ AI inference server (Oracle Cloud VPS + LiteLLM).
  *
  * Features:
  *   - Custom sk-mkq- API key authentication
@@ -79,7 +79,7 @@ function validateApiKey(key) {
 // ---------------------------------------------------------------------------
 
 /**
- * Stream a chat completion from the DeepSeek-R1 server.
+ * Stream a chat completion from the MKQ AI server.
  *
  * Usage:
  *   const stream = streamChatCompletion({
@@ -108,7 +108,7 @@ export function streamChatCompletion(options) {
   const {
     messages,
     temperature = 0.7,
-    maxTokens = 2048,
+    maxTokens = 4096,
     onToken,
     onThinking,
     onDone,
@@ -271,7 +271,7 @@ export function streamChatCompletion(options) {
       const delta = choices[0].delta;
       if (!delta) return;
 
-      // DeepSeek-R1 returns reasoning_content (thinking) + content (answer)
+      // MKQ AI returns reasoning_content (thinking) + content (answer)
       if (delta.reasoning_content) {
         thinkingText += delta.reasoning_content;
         onThinking?.(delta.reasoning_content);
@@ -405,7 +405,7 @@ function sseParser() {
 export async function chatCompletion(messages, options = {}) {
   const {
     temperature = 0.7,
-    maxTokens = 2048,
+    maxTokens = 4096,
     signal,
   } = options;
 
@@ -492,7 +492,7 @@ export function getConfig() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DeepSeek-R1 Chat</title>
+  <title>MKQ AI Chat</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 1rem; }
@@ -509,13 +509,13 @@ export function getConfig() {
   </style>
 </head>
 <body>
-  <h1>🤖 DeepSeek-R1 Chat</h1>
+  <h1>🤖 MKQ AI Chat</h1>
   <div id="chat-box"></div>
   <div id="input-area">
     <input id="user-input" type="text" placeholder="Type your message..." autofocus />
     <button id="send-btn">Send</button>
   </div>
-  <div id="status">Ready</div>
+  <div id="status">MKQ AI — بلا حدود. Ask anything.</div>
 
   <script type="module">
     import { streamChatCompletion, configure } from './streaming-client.js';
@@ -596,7 +596,7 @@ export function getConfig() {
         onError: (err) => {
           assistantDiv.textContent = `❌ Error: ${err.message}`;
           statusEl.textContent = 'Error — check console';
-          console.error('[DeepSeek-R1 Error]', err);
+          console.error('[MKQ AI Error]', err);
           isStreaming = false;
           sendBtn.disabled = false;
         },

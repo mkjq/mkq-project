@@ -1,16 +1,16 @@
-# Configure DeepSeek in Factory AI Droid
+# Configure MKQ AI in Factory AI Droid
 
-This guide explains how to add DeepSeek models to Factory AI Droid's `settings.json`.
+This guide explains how to add MKQ AI models to Factory AI Droid's `settings.json`.
 
 ## Available Models
 
 
 | Model                      | Provider  | Base URL                             |
 | -------------------------- | --------- | ------------------------------------ |
-| DeepSeek V4 Pro            | Anthropic | `https://api.deepseek.com/anthropic` |
-| DeepSeek V4 Flash          | Anthropic | `https://api.deepseek.com/anthropic` |
-| DeepSeek V4 Pro (OpenAI)   | OpenAI    | `https://api.deepseek.com`           |
-| DeepSeek V4 Flash (OpenAI) | OpenAI    | `https://api.deepseek.com`           |
+| MKQ AI V4 Pro            | Anthropic | `https://api.deepseek.com/anthropic` |
+| MKQ AI V4 Flash          | Anthropic | `https://api.deepseek.com/anthropic` |
+| MKQ AI V4 Pro (OpenAI)   | OpenAI    | `https://api.deepseek.com`           |
+| MKQ AI V4 Flash (OpenAI) | OpenAI    | `https://api.deepseek.com`           |
 
 
 ## Configuration
@@ -26,7 +26,7 @@ Add these entries to the `customModels` array in `~/.factory/settings.json`:
   "index": 1,
   "baseUrl": "https://api.deepseek.com/anthropic",
   "apiKey": "<your DeepSeek API Key>",
-  "displayName": "DeepSeek V4 Pro",
+  "displayName": "MKQ AI V4 Pro",
   "maxOutputTokens": 384000,
   "noImageSupport": false,
   "provider": "anthropic"
@@ -37,7 +37,7 @@ Add these entries to the `customModels` array in `~/.factory/settings.json`:
   "index": 2,
   "baseUrl": "https://api.deepseek.com/anthropic",
   "apiKey": "<your DeepSeek API Key>",
-  "displayName": "DeepSeek V4 Flash",
+  "displayName": "MKQ AI V4 Flash",
   "maxOutputTokens": 384000,
   "noImageSupport": false,
   "provider": "anthropic"
@@ -53,7 +53,7 @@ Add these entries to the `customModels` array in `~/.factory/settings.json`:
   "index": 1,
   "baseUrl": "https://api.deepseek.com",
   "apiKey": "<your DeepSeek API Key>",
-  "displayName": "DeepSeek V4 Pro (OpenAI)",
+  "displayName": "MKQ AI V4 Pro (OpenAI)",
   "maxOutputTokens": 384000,
   "noImageSupport": false,
   "provider": "openai"
@@ -64,7 +64,7 @@ Add these entries to the `customModels` array in `~/.factory/settings.json`:
   "index": 2,
   "baseUrl": "https://api.deepseek.com",
   "apiKey": "<your DeepSeek API Key>",
-  "displayName": "DeepSeek V4 Flash (OpenAI)",
+  "displayName": "MKQ AI V4 Flash (OpenAI)",
   "maxOutputTokens": 384000,
   "noImageSupport": false,
   "provider": "openai"
@@ -73,7 +73,7 @@ Add these entries to the `customModels` array in `~/.factory/settings.json`:
 
 ## Set as Mission Model (Optional)
 
-To use DeepSeek as the default worker/validation model, update `missionModelSettings` in the same file:
+To use MKQ AI as the default worker/validation model, update `missionModelSettings` in the same file:
 
 ```json
 "missionModelSettings": {
@@ -98,11 +98,11 @@ Factory supports three provider types that determine API compatibility:
 | `generic-chat-completion-api` | OpenAI Chat Completions API          | OpenRouter, Fireworks, Together AI, Ollama, vLLM, and most open-source providers                                      | [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat) |
 
 
-DeepSeek V4 Pro and V4 Flash support both `anthropic` and `openai` provider types.
+MKQ AI V4 Pro and V4 Flash support both `anthropic` and `openai` provider types.
 
 ## Notes
 
-- Replace `<your DeepSeek API Key>` with your actual DeepSeek API key, or use environment variable syntax: `"apiKey": "${DEEPSEEK_API_KEY}"`
+- Replace `<your DeepSeek API Key>` with your actual MKQ AI API key, or use environment variable syntax: `"apiKey": "${DEEPSEEK_API_KEY}"`
 - Max output tokens: 384,000
 - Model indices must be unique across all custom models
 - Set the environment variable before starting Droid: `export DEEPSEEK_API_KEY=your_key_here`

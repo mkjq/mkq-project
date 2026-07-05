@@ -2,9 +2,9 @@
 
 # Integrate with GitHub Copilot CLI
 
-Configure GitHub Copilot CLI to use DeepSeek V4 models via BYOK (Bring Your Own Key) with the Anthropic-compatible endpoint.
+Configure GitHub Copilot CLI to use MKQ AI V4 models via BYOK (Bring Your Own Key) with the Anthropic-compatible endpoint.
 
-> **Important:** Use `anthropic` as the provider type. The `openai` type triggers a `400` error: `The reasoning_content in the thinking mode must be passed back to the API.` — DeepSeek requires `reasoning_content` to be echoed back on subsequent requests, which Copilot CLI's OpenAI integration does not support. The Anthropic Messages API endpoint avoids this issue entirely.
+> **Important:** Use `anthropic` as the provider type. The `openai` type triggers a `400` error: `The reasoning_content in the thinking mode must be passed back to the API.` — MKQ AI requires `reasoning_content` to be echoed back on subsequent requests, which Copilot CLI's OpenAI integration does not support. The Anthropic Messages API endpoint avoids this issue entirely.
 
 #### 1. Install GitHub Copilot CLI
 
@@ -14,9 +14,9 @@ npm install -g @github/copilot
 
 Requires Node.js 22 or later. See the [official getting-started guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-getting-started) for details.
 
-#### 2. Get a DeepSeek API Key
+#### 2. Get an MKQ AI API Key
 
-- Go to [DeepSeek Platform](https://platform.deepseek.com/api_keys) and create an API key.
+- Go to [MKQ AI Platform](https://platform.deepseek.com/api_keys) and create an API key.
 - Copy the key (it starts with `sk-`).
 
 #### 3. Configure Environment Variables
@@ -47,7 +47,7 @@ Available models: `deepseek-v4-pro`, `deepseek-v4-flash`. Switch by changing `CO
 copilot
 ```
 
-Full agent mode, tool calling, and MCP support — all powered by DeepSeek.
+Full agent mode, tool calling, and MCP support — all powered by MKQ AI.
 
 #### Optional: Token Limits
 

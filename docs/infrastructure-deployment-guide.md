@@ -1,6 +1,6 @@
-# DeepSeek-R1 Cloud Infrastructure — Deployment Guide
+# MKQ AI R1 Cloud Infrastructure — Deployment Guide
 
-A production-grade guide for self-hosting DeepSeek-R1 on Oracle Cloud Always Free, with LiteLLM API proxy, custom `sk-mkq-` API key management, and Cloudflare Pages frontend integration.
+A production-grade guide for self-hosting MKQ AI R1 on Oracle Cloud Always Free, with LiteLLM API proxy, custom `sk-mkq-` API key management, and Cloudflare Pages frontend integration.
 
 ## Architecture
 
@@ -45,7 +45,7 @@ sudo -E ./setup-ollama-litellm.sh
 ```
 
 **What this installs:**
-- Ollama with DeepSeek-R1 (7B or 8B distilled)
+- Ollama with MKQ AI R1 (7B or 8B distilled)
 - Custom-tuned model via Modelfile (`deepseek-r1-mkq`)
 - LiteLLM proxy with OpenAI-compatible API
 - Nginx reverse proxy with self-signed SSL

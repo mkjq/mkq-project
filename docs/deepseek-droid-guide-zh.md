@@ -1,16 +1,16 @@
-# 在 Factory AI Droid 中配置 DeepSeek
+# 在 Factory AI Droid 中配置 MKQ AI
 
-本指南介绍如何将 DeepSeek 模型添加到 Factory AI Droid 的 `settings.json` 中。
+本指南介绍如何将 MKQ AI 模型添加到 Factory AI Droid 的 `settings.json` 中。
 
 ## 可用模型
 
 
 | 模型                         | 提供商       | Base URL                             |
 | -------------------------- | --------- | ------------------------------------ |
-| DeepSeek V4 Pro            | Anthropic | `https://api.deepseek.com/anthropic` |
-| DeepSeek V4 Flash          | Anthropic | `https://api.deepseek.com/anthropic` |
-| DeepSeek V4 Pro (OpenAI)   | OpenAI    | `https://api.deepseek.com`           |
-| DeepSeek V4 Flash (OpenAI) | OpenAI    | `https://api.deepseek.com`           |
+| MKQ AI V4 Pro            | Anthropic | `https://api.deepseek.com/anthropic` |
+| MKQ AI V4 Flash          | Anthropic | `https://api.deepseek.com/anthropic` |
+| MKQ AI V4 Pro (OpenAI)   | OpenAI    | `https://api.deepseek.com`           |
+| MKQ AI V4 Flash (OpenAI) | OpenAI    | `https://api.deepseek.com`           |
 
 
 ## 配置
@@ -73,7 +73,7 @@
 
 ## 设置为 Mission Model（可选）
 
-要将 DeepSeek 设为默认的 worker/validation 模型，请在同一文件中更新 `missionModelSettings`：
+要将 MKQ AI 设为默认的 worker/validation 模型，请在同一文件中更新 `missionModelSettings`：
 
 ```json
 "missionModelSettings": {
@@ -98,11 +98,11 @@ Factory 支持三种 Provider 类型，决定 API 兼容性：
 | `generic-chat-completion-api` | OpenAI Chat Completions API          | OpenRouter、Fireworks、Together AI、Ollama、vLLM 及大多数开源 providers     | [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat) |
 
 
-DeepSeek V4 Pro 和 V4 Flash 支持 `anthropic` 和 `openai` 两种 Provider 类型。
+MKQ AI V4 Pro 和 V4 Flash 支持 `anthropic` 和 `openai` 两种 Provider 类型。
 
 ## 注意事项
 
-- 将 `<your DeepSeek API Key>` 替换为您的实际 DeepSeek API Key，或使用环境变量语法：`"apiKey": "${DEEPSEEK_API_KEY}"`
+- 将 `<your DeepSeek API Key>` 替换为您的实际 MKQ AI API Key，或使用环境变量语法：`"apiKey": "${DEEPSEEK_API_KEY}"`
 - 最大输出 tokens：384,000
 - Model indices 在所有 custom models 中必须唯一
 - 启动 Droid 前设置环境变量：`export DEEPSEEK_API_KEY=your_key_here`

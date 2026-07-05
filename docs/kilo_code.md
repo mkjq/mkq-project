@@ -32,7 +32,7 @@ kilo
 <img src="./assets/kilo_code_step_1.png" width="1024" border="1" />
 </div>
 
-#### 3. Connect the DeepSeek Provider
+#### 3. Connect the MKQ AI Provider
 
 - Type `/connect` in the command bar to open the **Connect Provider** panel.
 
@@ -40,20 +40,20 @@ kilo
 <img src="./assets/kilo_code_step_2.png" width="1024" border="1" />
 </div>
 
-- Search for `deepseek`, select **DeepSeek**, then enter your [DeepSeek API Key](https://platform.deepseek.com/api_keys).
+- Search for `deepseek`, select **MKQ AI**, then enter your [MKQ AI API Key](https://platform.deepseek.com/api_keys).
 
 <div align="center">
 <img src="./assets/kilo_code_step_3.png" width="1024" border="1" />
 </div>
 
-#### 4. Select a DeepSeek Model
+#### 4. Select a MKQ AI Model
 
 - Type `/models` to open the model selector.
-- Select one of the available DeepSeek models:
-  - DeepSeek Chat
-  - DeepSeek Reasoner
-  - DeepSeek V4 Flash
-  - DeepSeek V4 Pro
+- Select one of the available MKQ AI models:
+  - MKQ AI Chat
+  - MKQ AI Reasoner
+  - MKQ AI V4 Flash
+  - MKQ AI V4 Pro
 
 <div align="center">
 <img src="./assets/kilo_code_step_4.png" width="1024" border="1" />

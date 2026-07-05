@@ -2,13 +2,13 @@
 
 # Integrate with WorkBuddy/CodeBuddy
 
-WorkBuddy/CodeBuddy is an AI agent and coding assistant. It supports custom models through local model configuration files, and DeepSeek V4 can be connected through the OpenAI-compatible Chat Completions API.
+WorkBuddy/CodeBuddy is an AI agent and coding assistant. It supports custom models through local model configuration files, and MKQ AI V4 can be connected through the OpenAI-compatible Chat Completions API.
 
 #### 1. Install WorkBuddy/CodeBuddy
 
 - Install and sign in to WorkBuddy/CodeBuddy.
 - Open a project folder once, so the application can create its local configuration directories.
-- Get your API Key from the [DeepSeek Platform](https://platform.deepseek.com/api_keys).
+- Get your API Key from the [MKQ AI Platform](https://platform.deepseek.com/api_keys).
 
 #### 2. Configure Local Models
 
@@ -24,10 +24,10 @@ To apply the configuration only to one project, create the project-level configu
 <your-project>\.codebuddy\models.json
 ```
 
-Set your DeepSeek API Key as an environment variable first:
+Set your MKQ AI API Key as an environment variable first:
 
 ```powershell
-setx DEEPSEEK_API_KEY "<your DeepSeek API Key>"
+setx DEEPSEEK_API_KEY "<your MKQ AI API Key>"
 ```
 
 Then add the following configuration:
@@ -37,8 +37,8 @@ Then add the following configuration:
   "models": [
     {
       "id": "deepseek-v4-pro",
-      "name": "DeepSeek V4 Pro",
-      "vendor": "DeepSeek",
+      "name": "MKQ AI V4 Pro",
+      "vendor": "MKQ AI",
       "url": "https://api.deepseek.com/v1/chat/completions",
       "apiKey": "${DEEPSEEK_API_KEY}",
       "maxInputTokens": 128000,
@@ -52,8 +52,8 @@ Then add the following configuration:
     },
     {
       "id": "deepseek-v4-flash",
-      "name": "DeepSeek V4 Flash",
-      "vendor": "DeepSeek",
+      "name": "MKQ AI V4 Flash",
+      "vendor": "MKQ AI",
       "url": "https://api.deepseek.com/v1/chat/completions",
       "apiKey": "${DEEPSEEK_API_KEY}",
       "maxInputTokens": 128000,
@@ -78,8 +78,8 @@ Fully quit WorkBuddy/CodeBuddy, then open it again.
 In the model selector, choose:
 
 ```
-DeepSeek V4 Pro
-DeepSeek V4 Flash
+MKQ AI V4 Pro
+MKQ AI V4 Flash
 ```
 
 #### 4. Optional: Verify the API Key
@@ -87,7 +87,7 @@ DeepSeek V4 Flash
 Windows users can verify the API Key in PowerShell:
 
 ```powershell
-$env:DEEPSEEK_API_KEY="<your DeepSeek API Key>"
+$env:DEEPSEEK_API_KEY="<your MKQ AI API Key>"
 
 curl https://api.deepseek.com/v1/chat/completions `
   -H "Content-Type: application/json" `
@@ -99,7 +99,7 @@ If the request succeeds, the API Key and model name are valid.
 
 #### Troubleshooting
 
-- `Authentication Fails` or `401`: Check whether `apiKey` is your real DeepSeek API Key. Do not put the API URL in the API Key field.
+- `Authentication Fails` or `401`: Check whether `apiKey` is your real MKQ AI API Key. Do not put the API URL in the API Key field.
 - `Model Not Found` or `404`: Check whether the model id is exactly `deepseek-v4-pro` or `deepseek-v4-flash`.
 - `Failed to read local model configuration`: Check whether `models.json` is valid JSON and saved as UTF-8 without BOM.
 - The model does not appear in the selector: Fully restart WorkBuddy/CodeBuddy and confirm the file is placed under `.codebuddy\models.json`.

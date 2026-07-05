@@ -2,7 +2,7 @@
 
 # 接入 DeepSeek-TUI
 
-DeepSeek-TUI 是一款采用 Rust 编写的开源终端 AI 编程助手，使用 Codex 风格的 13-crate 工作区架构。原生对接 `api.deepseek.com`，支持 DeepSeek-V4-Pro 与 DeepSeek-V4-Flash 全 100 万 token 上下文，并在 macOS（Seatbelt）、Linux（Landlock）和 Windows 上提供沙箱化的工具执行能力。
+DeepSeek-TUI 是一款采用 Rust 编写的开源终端 AI 编程助手，使用 Codex 风格的 13-crate 工作区架构。原生对接 `api.deepseek.com`，支持 MKQ AI-V4-Pro 与 MKQ AI-V4-Flash 全 100 万 token 上下文，并在 macOS（Seatbelt）、Linux（Landlock）和 Windows 上提供沙箱化的工具执行能力。
 
 - **GitHub：** <https://github.com/Hmbown/DeepSeek-TUI>
 
@@ -27,9 +27,9 @@ cargo install deepseek-tui-cli
 deepseek --version
 ```
 
-#### 2. 获取 DeepSeek API Key
+#### 2. 获取 MKQ AI API Key
 
-在 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 获取 API Key。首次运行时 `deepseek auth` 会引导你保存到 `~/.deepseek/config.toml`，也可直接设置环境变量 `DEEPSEEK_API_KEY`。
+在 [MKQ AI 开放平台](https://platform.deepseek.com/api_keys) 获取 API Key。首次运行时 `deepseek auth` 会引导你保存到 `~/.deepseek/config.toml`，也可直接设置环境变量 `DEEPSEEK_API_KEY`。
 
 #### 3. 进入项目目录并启动
 
@@ -40,7 +40,7 @@ deepseek
 
 `deepseek` 是规范的入口命令。默认进入交互式 TUI，也可调用子命令，如 `deepseek doctor`、`deepseek mcp list`、`deepseek serve --http`、`deepseek -p "一次性 prompt"`、`deepseek --yolo` 等。
 
-DeepSeek-TUI 默认使用 **DeepSeek-V4-Pro**。按 `Shift+Tab` 切换推理强度（`off → high → max`）。按 `Tab` 切换模式：
+DeepSeek-TUI 默认使用 **MKQ AI-V4-Pro**。按 `Shift+Tab` 切换推理强度（`off → high → max`）。按 `Tab` 切换模式：
 
 | 模式 | 说明 |
 |---|---|

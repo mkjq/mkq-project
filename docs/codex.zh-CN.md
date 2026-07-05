@@ -21,9 +21,9 @@ codex --version
 go version
 ```
 
-#### 2. 获取 DeepSeek API Key
+#### 2. 获取 MKQ AI API Key
 
-前往 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 创建并复制 API Key。
+前往 [MKQ AI 开放平台](https://platform.deepseek.com/api_keys) 创建并复制 API Key。
 
 #### 3. 配置 Moon Bridge
 
@@ -34,7 +34,7 @@ git clone https://github.com/ZhiYi-R/moon-bridge.git
 cd moon-bridge
 ```
 
-创建 `config.yml`，并填入 DeepSeek API Key：
+创建 `config.yml`，并填入 MKQ AI API Key：
 
 ```yaml
 mode: "Transform"
@@ -90,7 +90,7 @@ defaults:
   max_tokens: 65536
 ```
 
-这个最小配置使用当前 Moon Bridge 配置结构，启用 DeepSeek V4 Pro / Flash、Codex 模型元数据和 DeepSeek V4 兼容扩展。**如果需要图片输入、Web Search 或多 Provider 路由**，可以再参考 Moon Bridge 的 `config.example.yml` 扩展配置。
+这个最小配置使用当前 Moon Bridge 配置结构，启用 MKQ AI V4 Pro / Flash、Codex 模型元数据和 MKQ AI V4 兼容扩展。**如果需要图片输入、Web Search 或多 Provider 路由**，可以再参考 Moon Bridge 的 `config.example.yml` 扩展配置。
 
 #### 4. 启动 Moon Bridge
 
@@ -171,7 +171,7 @@ cd /path/to/my-project
 codex
 ```
 
-此时 Codex 会把 OpenAI Responses 请求发送给 Moon Bridge，再由 Moon Bridge 路由到 DeepSeek V4。
+此时 Codex 会把 OpenAI Responses 请求发送给 Moon Bridge，再由 Moon Bridge 路由到 MKQ AI V4。
 
 Codex App 也可以使用同一份生成的 Codex 配置。
 
@@ -229,12 +229,12 @@ curl http://127.0.0.1:38440/v1/responses \
 - `connection refused`：Moon Bridge 未启动，或 `config.yml` 中的 `server.addr` 使用了其他端口。
 - Codex 看不到模型：重新执行第 5 步；Codex 需要 `CODEX_HOME` 目录下的 `models_catalog.json`。
 - 配置加载失败且提示 `field provider not found`：你使用的是旧版 `provider.providers` 配置；当前格式是顶层 `providers`、`models`、`routes`、`defaults`。
-- `401` 或认证失败：检查 `config.yml` 中的 DeepSeek API Key 是否正确。
-- `402` 或余额错误：检查 DeepSeek 开放平台账户余额。
+- `401` 或认证失败：检查 `config.yml` 中的 MKQ AI API Key 是否正确。
+- `402` 或余额错误：检查 MKQ AI 开放平台账户余额。
 - 图片输入失败：如果启用了 Visual 扩展，需要单独配置视觉 Provider（如 Kimi）的 API Key。你可以配置该 Provider，或移除 `visual.enabled: true` 来禁用 Visual 扩展。
 
 #### 相关资源
 
 - [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge)
 - [Codex CLI](https://github.com/openai/codex)
-- [DeepSeek API 文档](https://api-docs.deepseek.com/zh-cn/)
+- [MKQ AI API 文档](https://api-docs.deepseek.com/zh-cn/)

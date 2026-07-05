@@ -56,7 +56,7 @@ Edit the `config.json` file and modify the following configuration items:
     },
     "providers": {
         "deepseek": {
-            "apiKey": "<your DeepSeek API Key>",
+            "apiKey": "<your MKQ AI API Key>",
             "apiBase": "https://api.deepseek.com/v1",
         },
     },

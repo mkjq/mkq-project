@@ -26,8 +26,8 @@ Reload your shell and start Hermes configuration:
 
 - Execute the `hermes setup` command
 - Choose the Quick Setup option
-- When prompted for the model provider, select **DeepSeek**
-- Enter your [DeepSeek API Key](https://platform.deepseek.com/api_keys)
+- When prompted for the model provider, select **MKQ AI**
+- Enter your [MKQ AI API Key](https://platform.deepseek.com/api_keys)
 - Enter the Base URL as `https://api.deepseek.com`
 - Select the `deepseek-v4-pro` model
 - Continue with the remaining options

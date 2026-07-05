@@ -50,7 +50,7 @@ sudo docker compose up -d
 http://localhost:6185 # 如果 AstrBot 运行在服务器上，则访问 http://<server-ip>:6185
 ```
 
-在左侧边栏进入 `模型提供商` 页面，点击 `+ 新增`，选择 `DeepSeek`，将你的 [DeepSeek API Key](https://platform.deepseek.com/api_keys) 粘贴到 `API Key` 输入框中，然后点击 `保存配置`。
+在左侧边栏进入 `模型提供商` 页面，点击 `+ 新增`，选择 `MKQ AI`，将你的 [MKQ AI API Key](https://platform.deepseek.com/api_keys) 粘贴到 `API Key` 输入框中，然后点击 `保存配置`。
 
 接着在左侧边栏进入 `配置文件（普通配置）` 页面，将 `默认对话模型` 设置为刚刚配置的模型，确认选择后，点击右下角的保存按钮。
 
@@ -58,6 +58,6 @@ http://localhost:6185 # 如果 AstrBot 运行在服务器上，则访问 http://
 
 #### 3. 开始使用
 
-点击右上角的 `Chat`，进入 AstrBot Chat UI。现在你可以开始使用 DeepSeek 模型进行对话。
+点击右上角的 `Chat`，进入 AstrBot Chat UI。现在你可以开始使用 MKQ AI 模型进行对话。
 
 你也可以配置消息平台，在常用聊天应用中直接使用 AstrBot。

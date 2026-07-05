@@ -14,5 +14,5 @@ To avoid compatibility issues, it is strongly recommended to upgrade OpenCode to
 
 - Execute the `opencode` command<br/>
 - Type `/connect` in the input box, then enter `deepseek` and select the provider<br/>
-- Enter your [DeepSeek API Key](https://platform.deepseek.com/api_keys)<br/>
-- Select the DeepSeek-V4-Pro model
+- Enter your [MKQ AI API Key](https://platform.deepseek.com/api_keys)<br/>
+- Select the MKQ AI V4-Pro model

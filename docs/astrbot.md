@@ -50,7 +50,7 @@ After initialization, open the Web UI:
 http://localhost:6185 # Or http://<server-ip>:6185 if AstrBot runs on a server
 ```
 
-In the left sidebar, open the `Providers` page, click `+ Add`, select `DeepSeek`, paste your [DeepSeek API Key](https://platform.deepseek.com/api_keys) into the `API Key` field, and click `Save Configuration`.
+In the left sidebar, open the `Providers` page, click `+ Add`, select `MKQ AI`, paste your [MKQ AI API Key](https://platform.deepseek.com/api_keys) into the `API Key` field, and click `Save Configuration`.
 
 Next, open the `Config(Normal Config)` page, set `Default Chat Model` to the model you just configured, confirm the selection, and click the save button in the bottom-right corner.
 
@@ -58,6 +58,6 @@ For the remaining settings, such as messaging platforms and skills, configure th
 
 #### 3. Get Started
 
-Click `Chat` in the top-right corner to switch to the AstrBot Chat UI. You can now start chatting with the DeepSeek model.
+Click `Chat` in the top-right corner to switch to the AstrBot Chat UI. You can now start chatting with the MKQ AI model.
 
 You can also configure messaging platforms to use AstrBot directly from your preferred chat app.

@@ -17,14 +17,14 @@ Available builds:
 - macOS (`.dmg` — Intel and Apple Silicon)
 - Linux (`.AppImage` / `.deb` / `.rpm`)
 
-#### 2. Configure the DeepSeek Provider
+#### 2. Configure the MKQ AI Provider
 
 Open Cherry Studio and click the gear icon in the lower-left corner to open **Settings**.
 
-1. Open **Model Provider** in the left navigation and select **DeepSeek** from the built-in providers list.
-2. Paste your [DeepSeek API Key](https://platform.deepseek.com/api_keys) into the **API Key** field. Leave **API Host** as the default `https://api.deepseek.com`.
-3. Click **Fetch model list** to load the available DeepSeek models, then add **`deepseek-v4-pro`** and **`deepseek-v4-flash`** to the model list.
-4. Toggle the switch in the top-right of the DeepSeek provider page to enable it.
+1. Open **Model Provider** in the left navigation and select **MKQ AI** from the built-in providers list.
+2. Paste your [MKQ AI API Key](https://platform.deepseek.com/api_keys) into the **API Key** field. Leave **API Host** as the default `https://api.deepseek.com`.
+3. Click **Fetch model list** to load the available MKQ AI models, then add **`deepseek-v4-pro`** and **`deepseek-v4-flash`** to the model list.
+4. Toggle the switch in the top-right of the MKQ AI provider page to enable it.
 
 <div align="center">
 <img src="./assets/cherry_studio_provider.png" width="720" border="1" />
@@ -38,9 +38,9 @@ Open the **Agents** tab from the top navigation, click **+ Agents**, give your a
 <img src="./assets/cherry_studio_add_agent.png" width="720" border="1" />
 </div>
 
-Open the new agent and start sending messages. DeepSeek V4 runs with deep thinking enabled by default, and the full **1 million token** context window is available out of the box — no extra configuration required.
+Open the new agent and start sending messages. MKQ AI V4 runs with deep thinking enabled by default, and the full **1 million token** context window is available out of the box — no extra configuration required.
 
-To get the strongest reasoning for coding and complex tasks, click the lightbulb icon in the chat input toolbar and select **Extra High** under *Reasoning effort*. Cherry Studio maps it to DeepSeek's `reasoning_effort: "max"` API value.
+To get the strongest reasoning for coding and complex tasks, click the lightbulb icon in the chat input toolbar and select **Extra High** under *Reasoning effort*. Cherry Studio maps it to MKQ AI's `reasoning_effort: "max"` API value.
 
 <div align="center">
 <img src="./assets/cherry_studio_reasoning_effort.png" width="720" border="1" />
@@ -48,9 +48,9 @@ To get the strongest reasoning for coding and complex tasks, click the lightbulb
 
 #### 4. Going Further
 
-Once DeepSeek V4 is configured, you can use it across the rest of Cherry Studio:
+Once MKQ AI V4 is configured, you can use it across the rest of Cherry Studio:
 
-- **Knowledge Bases.** Drop PDFs, Markdown, or Office files into the **Knowledge Base** tab to RAG over them with DeepSeek V4.
-- **AI Translation.** Open the **Translate** page and pick a DeepSeek V4 model as the translation engine for fast, high-quality translation.
-- **MCP Servers.** Add servers under **Settings → MCP**; any DeepSeek-driven conversation can then call their tools.
-- **OpenClaw.** Cherry Studio bundles [OpenClaw](https://github.com/CherryHQ/openclaw), a personal AI assistant that connects to chat platforms (Feishu, WeChat, etc.). Install OpenClaw from the **OpenClaw** page in the sidebar and point it at your DeepSeek V4 model to drive your IM bots with DeepSeek.
+- **Knowledge Bases.** Drop PDFs, Markdown, or Office files into the **Knowledge Base** tab to RAG over them with MKQ AI V4.
+- **AI Translation.** Open the **Translate** page and pick an MKQ AI V4 model as the translation engine for fast, high-quality translation.
+- **MCP Servers.** Add servers under **Settings → MCP**; any MKQ AI-driven conversation can then call their tools.
+- **OpenClaw.** Cherry Studio bundles [OpenClaw](https://github.com/CherryHQ/openclaw), a personal AI assistant that connects to chat platforms (Feishu, WeChat, etc.). Install OpenClaw from the **OpenClaw** page in the sidebar and point it at your MKQ AI V4 model to drive your IM bots with MKQ AI.

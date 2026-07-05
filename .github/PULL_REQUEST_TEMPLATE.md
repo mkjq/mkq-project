@@ -7,7 +7,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for full guidelines.
 - [ ] Model names are current (v4-pro / v4-flash, not v3 names)
 - [ ] 1M context is configured or mentioned
 - [ ] Max thinking effort level is supported
-- [ ] Pricing is current (input, output, cache hit), verified against [DeepSeek API Docs](https://api-docs.deepseek.com/quick_start/pricing)
+- [ ] Pricing is current (input, output, cache hit), verified against [MKQ AI API Docs](https://api-docs.deepseek.com/quick_start/pricing)
 - [ ] Config fields are verified to work in the agent
 - [ ] No workarounds for already-fixed upstream bugs
 

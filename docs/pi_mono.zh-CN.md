@@ -24,9 +24,9 @@ pi --version
 > curl -fsSL https://pi.dev/install.sh | sh
 > ```
 
-#### 2. 配置 DeepSeek 供应商
+#### 2. 配置 MKQ AI 供应商
 
-Pi 通过 `models.json` 支持自定义供应商。将 DeepSeek 添加为 OpenAI 兼容供应商：
+Pi 通过 `models.json` 支持自定义供应商。将 MKQ AI 添加为 OpenAI 兼容供应商：
 
 - **Linux / macOS**：`~/.pi/agent/models.json`
 - **Windows**：`%USERPROFILE%\.pi\agent\models.json`
@@ -97,7 +97,7 @@ Pi 通过 `models.json` 支持自定义供应商。将 DeepSeek 添加为 OpenAI
 }
 ```
 
-其中 API Key 在 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 获取。
+其中 API Key 在 [MKQ AI 开放平台](https://platform.deepseek.com/api_keys) 获取。
 
 设置环境变量：
 

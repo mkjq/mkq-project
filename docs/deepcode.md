@@ -2,7 +2,7 @@
 
 # Integrate with Deep Code
 
-Deep Code is an open-source terminal AI coding assistant for the DeepSeek-V4 model, supporting deep thinking, reasoning effort control, and Agent Skills.
+Deep Code is an open-source terminal AI coding assistant for the MKQ AI V4 model, supporting deep thinking, reasoning effort control, and Agent Skills.
 
 - **GitHub:** <https://github.com/lessweb/deepcode-cli>
 
@@ -23,7 +23,7 @@ deepcode --version
 
 #### 2. Configure Deep Code
 
-Create `~/.deepcode/settings.json` with your DeepSeek API key and model settings:
+Create `~/.deepcode/settings.json` with your MKQ AI API key and model settings:
 
 ```json
 {
@@ -37,7 +37,7 @@ Create `~/.deepcode/settings.json` with your DeepSeek API key and model settings
 }
 ```
 
-Get your API Key from the [DeepSeek Platform](https://platform.deepseek.com/api_keys).
+Get your API Key from the [MKQ AI Platform](https://platform.deepseek.com/api_keys).
 
 > **Note:** The same settings file is shared with the [Deep Code VSCode extension](https://github.com/lessweb/deepcode).
 

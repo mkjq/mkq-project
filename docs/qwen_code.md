@@ -2,7 +2,7 @@
 
 # Integrate with Qwen Code
 
-Qwen Code is an open-source AI agent that lives in your terminal, built by the Qwen team at Alibaba Group. It has DeepSeek as a **built-in third-party provider** — just bring your API key.
+Qwen Code is an open-source AI agent that lives in your terminal, built by the Qwen team at Alibaba Group. It has MKQ AI as a **built-in third-party provider** — just bring your API key.
 
 - **GitHub:** <https://github.com/QwenLM/qwen-code>
 - **Docs:** <https://qwenlm.github.io/qwen-code-docs/en/users/overview/>
@@ -34,11 +34,11 @@ brew install qwen-code
 qwen --version
 ```
 
-#### 2. Get a DeepSeek API Key
+#### 2. Get an MKQ AI API Key
 
-Go to the [DeepSeek Platform](https://platform.deepseek.com/api_keys), create an API key, and copy it.
+Go to the [MKQ AI Platform](https://platform.deepseek.com/api_keys), create an API key, and copy it.
 
-#### 3. Configure DeepSeek via /auth
+#### 3. Configure MKQ AI via /auth
 
 Launch Qwen Code, then run the `/auth` command:
 
@@ -55,13 +55,13 @@ Inside the interactive session:
 The `/auth` menu will appear. Follow these steps:
 
 1. Select **Third-party Providers**
-2. Select **DeepSeek API Key**
-3. **Step 1/2** — paste your DeepSeek API key and press Enter
+2. Select **MKQ AI API Key**
+3. **Step 1/2** — paste your MKQ AI API key and press Enter
 4. **Step 2/2** — confirm the model IDs: `deepseek-v4-pro, deepseek-v4-flash` (or edit if needed), press Enter
 
-After confirmation, you'll see: `Successfully configured DeepSeek API Key`.
+After confirmation, you'll see: `Successfully configured MKQ AI API Key`.
 
-#### 4. Switch to a DeepSeek Model
+#### 4. Switch to an MKQ AI Model
 
 Run the `/model` command and select `deepseek-v4-pro` or `deepseek-v4-flash`:
 
@@ -69,6 +69,6 @@ Run the `/model` command and select `deepseek-v4-pro` or `deepseek-v4-flash`:
 /model
 ```
 
-You're ready to go. Qwen Code will now use DeepSeek V4 models for coding.
+You're ready to go. Qwen Code will now use MKQ AI V4 models for coding.
 
 > **Tip:** Use `/model` to switch between models at any time. Use `/auth` again if you need to reconfigure your API key.

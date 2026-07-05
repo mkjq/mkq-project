@@ -1,0 +1,45 @@
+# =============================================================================
+# Cloudflare Pages Configuration — MKQ AI Frontend
+# =============================================================================
+# Deploy:
+#   npx wrangler pages deploy frontend/dist --project-name=mkq-ai
+#
+# Or via git integration:
+#   Connect your GitHub repo to Cloudflare Pages in the dashboard
+#   Build command:   node frontend/build.js
+#   Output directory: frontend/dist
+#
+# Custom domain:
+#   npx wrangler pages domain add mkq-ai ai.mkq.one
+# =============================================================================
+
+name = "mkq-ai"
+compatibility_date = "2026-07-05"
+compatibility_flags = ["nodejs_compat"]
+
+# Pages project config
+[pages]
+# The directory to deploy (default: ./)
+# Build output goes to frontend/dist/
+
+# ─── Environment Variables ──────────────────────────────────────────────────
+# Set these in Cloudflare Dashboard: Settings → Environment Variables
+#   API_BASE_URL  = https://YOUR_VPS_IP_OR_DOMAIN
+#   API_KEY       = sk-mkq-YOUR_42_HEX_CHARS
+#   MODEL         = deepseek-r1-mkq
+# ─────────────────────────────────────────────────────────────────────────────
+
+[vars]
+# Default fallback values (override in dashboard for production)
+API_BASE_URL = "https://YOUR_VPS_IP_OR_DOMAIN"
+API_KEY = "sk-mkq-YOUR_KEY_HERE"
+MODEL = "deepseek-r1-mkq"
+
+# ─── Domain ─────────────────────────────────────────────────────────────────
+# After first deploy, add your custom domain:
+#   1. In Cloudflare DNS, add CNAME: ai → mkq-ai.pages.dev
+#   2. npx wrangler pages domain add mkq-ai ai.mkq.one
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ─── Headers / Security ─────────────────────────────────────────────────────
+# The _headers file in this directory is read automatically by Cloudflare Pages

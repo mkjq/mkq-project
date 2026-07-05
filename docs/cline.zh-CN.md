@@ -30,10 +30,10 @@ Cline 是一款运行在 VS Code 中的 AI 编程助手扩展，支持多种 API
 
 #### 4. 配置 API 供应商
 
-**方法一：DeepSeek 供应商**
+**方法一：MKQ AI 供应商**
 
-- 选择 **API Provider** 为 **DeepSeek**。
-- 填入你的 [DeepSeek API Key](https://platform.deepseek.com/api_keys)。
+- 选择 **API Provider** 为 **MKQ AI**。
+- 填入你的 [MKQ AI API Key](https://platform.deepseek.com/api_keys)。
 - 选择要使用的模型。
 
 > **注意：** `deepseek-reasoner` 和 `deepseek-chat` 模型即将废弃，请等待 Cline 官方添加 `deepseek-v4-pro` 和 `deepseek-v4-flash` 模型。
@@ -52,7 +52,7 @@ Cline 是一款运行在 VS Code 中的 AI 编程助手扩展，支持多种 API
 
 - 选择 **API Provider** 为 **OpenAI Compatible**。
 - **Base URL** 填入 `https://api.deepseek.com`。
-- 填入你的 [DeepSeek API Key](https://platform.deepseek.com/api_keys)。
+- 填入你的 [MKQ AI API Key](https://platform.deepseek.com/api_keys)。
 - 填入 **Model ID**，如 `deepseek-v4-pro`。
 - （选做）点击 **Model Configuration**，调整窗口大小、温度、价格和限量等参数。
 
