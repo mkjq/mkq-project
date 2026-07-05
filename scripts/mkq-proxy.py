@@ -80,7 +80,7 @@ def ollama_chat_sync(model: str, messages: list, temperature: float = 0.7, max_t
     """Non-streaming chat completion."""
     payload = {
         "model": model, "messages": messages, "stream": False,
-        "options": {"temperature": temperature, "num_predict": max_tokens}
+        "options": {"temperature": temperature, "num_predict": max(max_tokens, 2048)}
     }
     req = Request(
         f"{CFG['ollama_base']}/api/chat",
@@ -110,7 +110,7 @@ def ollama_chat_stream_stream(model: str, messages: list, temperature: float = 0
     """Streaming chat completion — yields SSE chunks."""
     payload = {
         "model": model, "messages": messages, "stream": True,
-        "options": {"temperature": temperature, "num_predict": max_tokens}
+        "options": {"temperature": temperature, "num_predict": max(max_tokens, 2048)}
     }
     req = Request(
         f"{CFG['ollama_base']}/api/chat",
